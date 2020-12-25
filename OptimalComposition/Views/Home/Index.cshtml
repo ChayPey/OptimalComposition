@@ -1,0 +1,127 @@
+﻿@model OptimalComposition.Models.InputValues
+@{
+    ViewData["Title"] = "InputValues";
+}
+
+<form method="post">
+    <header>
+        <h1 align="center">Ввод данных</h1>
+    </header>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Компонент шихты
+                    </th>
+                    <th>
+                        Масса Si, %
+                    </th>
+                    <th>
+                        Масса Mn, %
+                    </th>
+                    <th>
+                        Стоимость, усл.ед./т
+                    </th>
+                    <th>
+                        Мин. колличество, %
+                    </th>
+                    <th>
+                        Макс. колличество, %
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.ComponentInputValues.Count; i++)
+                {
+                    ComponentInputValue item = Model.ComponentInputValues[i];
+                    <tr>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].Name" value="@item.Name" />
+                        </td>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].PercentSi" value="@item.PercentSi" />
+                        </td>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].PercentMn" value="@item.PercentMn" />
+                        </td>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].Cost" value="@item.Cost" />
+                        </td>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].MinPercent" value="@item.MinPercent" />
+                        </td>
+                        <td>
+                            <input type="text" name="data.ComponentInputValues[@i].MaxPercent" value="@item.MaxPercent" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>
+                        Si
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        <input type="text" min="0" max="100" step="0.01" name="data.MinPercentSi" value="@Model.MinPercentSi" />
+                    </th>
+                    <th>
+                        <input type="text" min="0" max="100" step="0.01" name="data.MaxPercentSi" value="@Model.MaxPercentSi" />
+                    </th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>
+                        Mn
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        <input type="text" min="0" max="100" step="0.01" name="data.MinPercentMn" value="@Model.MinPercentMn" />
+                    </th>
+                    <th>
+                        <input type="text" min="0" max="100" step="0.01" name="data.MaxPercentMn" value="@Model.MaxPercentMn" />
+                    </th>
+                </tr>
+            </tbody>
+            <tbody>
+                <tr>
+                    <th>
+                        Всего, Т
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                    </th>
+                    <th>
+                        <input type="text" min="0" step="0.01" name="data.FullMassComponents" value="@Model.FullMassComponents" />
+                    </th>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div align="right">
+        <button type="submit" formaction="/Home/Results">Выполнить расчет</button>
+    </div>
+</form>
+
+
+
+
+

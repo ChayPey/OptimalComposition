@@ -1,0 +1,81 @@
+﻿@model OptimalComposition.Models.Results
+@{
+    ViewData["Title"] = "Results";
+}
+
+<h1>Результаты расчетов</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Компонент шихты
+            </th>
+            <th>
+                Масса компонета, Т
+            </th>
+            <th>
+                Масса Si, Т
+            </th>
+            <th>
+                Масса Mn, Т
+            </th>
+            <th>
+                Масса компонета, %
+            </th>
+            <th>
+                Стоимость, усл.ед.
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ComponentResults)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @Math.Round(item.FullMass, 4)
+                </td>
+                <td>
+                    @Math.Round(item.SiMass, 4)
+                </td>
+                <td>
+                    @Math.Round(item.MnMass, 4)
+                </td>
+                <td>
+                    @Math.Round(item.PercentMass, 4)
+                </td>
+                <td>
+                    @Math.Round(item.Cost, 4)
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tbody>
+        <tr>
+            <td>
+                <b>@Model.AllComponentResult.Name</b>
+            </td>
+            <td>
+                <b>@Math.Round(Model.AllComponentResult.FullMass,4)</b>
+            </td>
+            <td>
+                <b>@Math.Round(Model.AllComponentResult.SiMass, 4)</b>
+            </td>
+            <td>
+                <b>@Math.Round(Model.AllComponentResult.MnMass, 4)</b>
+            </td>
+            <td>
+                <b>@Math.Round(Model.AllComponentResult.PercentMass, 4)</b>
+            </td>
+            <td>
+                <b>@Math.Round(Model.AllComponentResult.Cost,4)</b>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
